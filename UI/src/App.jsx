@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import TestPage from './pages/Test/Test';
 import Home from './pages/Home/Home';
 import ScoreFeedback from './pages/FeedBack/FeedBack';
+import NotFound from './pages/NoteFound/NoteFound';
 
 function App() {
   const { user, loading } = useAuth();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/test" element={user ? <TestPage /> : <Navigate to="/login" />} />
         <Route path="/feedbackAndScore" element={user ? <ScoreFeedback /> : <Navigate to="/login" />} />
         <Route path="/" element={<Navigate to={user ? '/dashboard' : '/login'} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
