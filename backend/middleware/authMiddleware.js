@@ -14,11 +14,12 @@ const authMiddleware = (req, res, next) => {
 
     // Attach the decoded user information to the request object
     req.user = decoded;
+    console.log("now okay")
 
     // Proceed to the next middleware or route handler
     next();
   } catch (error) {
-    console.error('Token verification failed:', error);
+    console.log('Token verification failed:', error);
     return res.status(401).json({ message: 'Invalid token.' });
   }
 };

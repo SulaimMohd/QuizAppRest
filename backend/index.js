@@ -20,7 +20,7 @@ app.use(express.json()); // Parse JSON bodies
 
 app.use(cors())
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow only this origin
+  origin: process.env.FRONT_END_URL, // Allow only this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
   credentials: true, // Allow cookies and credentials
 })); // Enable CORS

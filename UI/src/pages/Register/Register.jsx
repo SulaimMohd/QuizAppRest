@@ -355,7 +355,7 @@ const RegisterPage = () => {
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await axios.post('http://localhost:3000/api/auth/register', values);
+        const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BASEURL}/api/auth/register`, values);
         if (response.status === 201) {
           navigate('/login'); // Redirect to login page on successful registration
         }

@@ -167,7 +167,7 @@
 
 // export default TestPage;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars, FaChevronLeft, FaChevronRight, FaCheck } from "react-icons/fa";
 import Header from "../../components/Header/Header";
 import SideNavbar from "../../components/SideNavbar/SideNavbar";
@@ -179,7 +179,7 @@ import { useNavigate } from "react-router-dom";
 import menuIcon from '../../assets/icon.png'
 
 const TestPage = () => {
-  const {setScore: setFinalScore,setUserAnswers: setFinaAnswers, questions, submitAnswers} = useData()
+  const {setScore: setFinalScore,setUserAnswers: setFinaAnswers, submitAnswers, questions} = useData()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -188,61 +188,8 @@ const TestPage = () => {
   const [userAnswers, setUserAnswers] = useState({});
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
-
-  // const questions = [
-  //   {
-  //     question: "Which of the following words is a synonym for 'exhilarating'?",
-  //     choices: ["Exciting", "Boring", "Tiresome", "Frightening", "Confusing"],
-  //     correctAnswer: "Exciting",
-  //   },
-  //   {
-  //     question: "What is the capital of France?",
-  //     choices: ["Berlin", "Madrid", "Paris", "Rome", "London"],
-  //     correctAnswer: "Paris",
-  //   },
-  //   {
-  //     question: "Which planet is known as the Red Planet?",
-  //     choices: ["Earth", "Mars", "Jupiter", "Saturn", "Venus"],
-  //     correctAnswer: "Mars",
-  //   },
-  //   {
-  //     question: "Which of the following words is a synonym for 'exhilarating'?",
-  //     choices: ["Exciting", "Boring", "Tiresome", "Frightening", "Confusing"],
-  //     correctAnswer: "Exciting",
-  //   },
-  //   {
-  //     question: "What is the capital of France?",
-  //     choices: ["Berlin", "Madrid", "Paris", "Rome", "London"],
-  //     correctAnswer: "Paris",
-  //   },
-  //   {
-  //     question: "Which planet is known as the Red Planet?",
-  //     choices: ["Earth", "Mars", "Jupiter", "Saturn", "Venus"],
-  //     correctAnswer: "Mars",
-  //   },
-  //   {
-  //     question: "Which of the following words is a synonym for 'exhilarating'?",
-  //     choices: ["Exciting", "Boring", "Tiresome", "Frightening", "Confusing"],
-  //     correctAnswer: "Exciting",
-  //   },
-  //   {
-  //     question: "Which planet is known as the Red Planet?",
-  //     choices: ["Earth", "Mars", "Jupiter", "Saturn", "Venus"],
-  //     correctAnswer: "Mars",
-  //   },
-  //   {
-  //     question: "Which of the following words is a synonym for 'exhilarating'?",
-  //     choices: ["Exciting", "Boring", "Tiresome", "Frightening", "Confusing"],
-  //     correctAnswer: "Exciting",
-  //   },
-  //   {
-  //     question: "Which of the following words is a synonym for 'exhilarating'?",
-  //     choices: ["Exciting", "Boring", "Tiresome", "Frightening", "Confusing"],
-  //     correctAnswer: "Exciting",
-  //   },
-    
-  //   // Add more questions here...
-  // ];
+  
+  
 
   const handleNext = () => {
     if (currentQuestion < questions.length) setCurrentQuestion((prev) => prev + 1);

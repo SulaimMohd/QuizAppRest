@@ -7,7 +7,7 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [token, setToken] = useState(null)
   // Check if the user is logged in on initial load
   useEffect(() => {
     const checkAuth = async () => {
@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
 
   // Login function
   const login = async (email, password) => {
-    const response = await axios.post('http://localhost:3000/api/auth/login', { email, password });
+    const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BASEURL}/api/auth/login`, { email, password });
     localStorage.setItem('token', response.data.token);
     localStorage.setItem('userData', JSON.stringify(response.data))
     setUser(response.data);
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout }}>
+    <AuthContext.Provider value={{ user, loading,token, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

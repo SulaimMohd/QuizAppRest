@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAuth } from './authContext';
 
 const dataContext = createContext();
 
@@ -9,16 +10,17 @@ export const DataProvider = ({ children }) => {
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const {token} = useAuth()
   // Fetch questions from the backend
   const fetchQuestions = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/questions/getQuestions',{
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BASEURL}/api/questions/getQuestions`,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }} );
       setQuestions(response.data);
       setLoading(false);
+      
     } catch (err) {
       setError(err.message);
       setLoading(false);
@@ -40,7 +42,7 @@ export const DataProvider = ({ children }) => {
   const submitAnswers = async (finalScore, finalAnswers) => {
     try {
       
-      await axios.post('http://localhost:3000/api/submit/submitAnswers', {
+      await axios.post(`${import.meta.env.VITE_REACT_APP_BASEURL}/api/submit/submitAnswers`, {
         answers: finalAnswers,
         score: finalScore *5,
       },{
@@ -77,7 +79,8 @@ export const DataProvider = ({ children }) => {
         updateAnswer,
         submitAnswers,
         setScore,
-        setUserAnswers
+        setUserAnswers,
+        fetchQuestions
       }}
     >
       {children}

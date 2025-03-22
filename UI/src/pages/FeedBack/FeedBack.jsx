@@ -103,7 +103,7 @@ export default function ScoreFeedback() {
     };
 
     try {
-      const response = await axios.post("http://localhost:3000/api/feedback/addFeedback", feedbackData,{
+      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_BASEURL}/api/feedback/addFeedback`, feedbackData,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         }});
