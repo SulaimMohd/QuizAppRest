@@ -13,7 +13,7 @@ const TestPage = () => {
   console.log("hi from the test")
   const {setScore: setFinalScore,setUserAnswers: setFinaAnswers, submitAnswers, questions, fetchQuestions} = useData()
   const navigate = useNavigate()
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [selectedChoice, setSelectedChoice] = useState(null);
@@ -65,7 +65,7 @@ const TestPage = () => {
   return (
     <div className="p-4">
       <Header isDropdownOpen={isDropdownOpen} setIsDropdownOpen={setIsDropdownOpen} />
-      <button onClick={() => setIsOpen(true)} className="p-2"><img src={menuIcon} alt="menuIcon" className='h-5 pr-3 self-end' /></button>
+      <button onClick={() => setIsOpen(true)} className="pl-7"><img src={menuIcon} alt="menuIcon" className='h-8 pr-3 self-end' /></button>
       <SideNavbar
         isOpen={isOpen}
         setIsOpen={setIsOpen}
