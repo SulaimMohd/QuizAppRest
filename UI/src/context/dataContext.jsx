@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import axios from 'axios';
-import { useAuth } from './authContext';
 
 const dataContext = createContext();
 
@@ -10,10 +9,11 @@ export const DataProvider = ({ children }) => {
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const {token} = useAuth()
+
   // Fetch questions from the backend
   const fetchQuestions = async () => {
     try {
+      console.log('this is the token in the fetchQuestions')
       const response = await axios.get(`${import.meta.env.VITE_REACT_APP_BASEURL}/api/questions/getQuestions`,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
@@ -64,9 +64,7 @@ export const DataProvider = ({ children }) => {
     }));
   };
 
-  useEffect(() => {
-    fetchQuestions();
-  }, []);
+  
 
   return (
     <dataContext.Provider

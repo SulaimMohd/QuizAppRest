@@ -179,7 +179,8 @@ import { useNavigate } from "react-router-dom";
 import menuIcon from '../../assets/icon.png'
 
 const TestPage = () => {
-  const {setScore: setFinalScore,setUserAnswers: setFinaAnswers, submitAnswers, questions} = useData()
+  console.log("hi from the test")
+  const {setScore: setFinalScore,setUserAnswers: setFinaAnswers, submitAnswers, questions, fetchQuestions} = useData()
   const navigate = useNavigate()
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -189,7 +190,9 @@ const TestPage = () => {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   
-  
+  useEffect(()=>{
+    fetchQuestions()
+  }, [])
 
   const handleNext = () => {
     if (currentQuestion < questions.length) setCurrentQuestion((prev) => prev + 1);
