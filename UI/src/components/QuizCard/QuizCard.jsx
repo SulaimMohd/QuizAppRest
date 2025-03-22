@@ -1,19 +1,3 @@
-// import AnswerChoice from "../AnswerChoice/AnswerChoice";
-// const QuizCard = ({ question, choices, selectedChoice, setSelectedChoice }) => (
-//   <div className="p-4 border rounded shadow-md">
-//     <h2 className="text-lg font-bold mb-2">{question}</h2>
-//     {choices.map((choice, index) => (
-//       <AnswerChoice 
-//         key={index} 
-//         text={choice} 
-//         isSelected={selectedChoice === choice} 
-//         onClick={() => setSelectedChoice(choice)} 
-//       />
-//     ))}
-//   </div>
-// );
-
-// export default QuizCard;
 import AnswerChoice from "../AnswerChoice/AnswerChoice";
 
 const QuizCard = ({ questionNumber,question, choices, selectedChoice, setSelectedChoice }) => (

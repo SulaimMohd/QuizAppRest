@@ -1,18 +1,3 @@
-// const AnswerChoice = ({ text, isSelected, onClick }) => (
-//   <label className="flex items-center p-2 w-1/4 border rounded my-1 bg-white">
-//     <input 
-//       type="radio" 
-//       name="answer" 
-//       checked={isSelected} 
-//       onChange={onClick} 
-//       className="mr-2" 
-//     />
-//     {text}
-//   </label>
-// );
-
-// export default AnswerChoice;
-
 const AnswerChoice = ({ text, isSelected, onClick }) => (
   <label
     className={`flex items-center p-3 border rounded-lg my-2 cursor-pointer transition-all 
